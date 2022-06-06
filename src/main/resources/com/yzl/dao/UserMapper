@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yzl.dao.UserMapper" >
+    <select id="getRenderList" resultType="com.yzl.entity.renderList">
+        select * from commodity;
+    </select>
+    <select id="getUser" resultType="com.yzl.entity.renderList">
+            select * from commodity where id = #{id};
+        </select>
+    <update id="deleteById">
+    	delete from commodity where id=#{id}
+    </update>
+    <insert id="addById" parameterType="com.yzl.entity.renderList">
+       insert into commodity values (#{id}, #{photo}, #{isState}, #{name}, #{explain}, #{points}, #{currentNum}, #{maxNum}, #{stateTitle})
+    </insert>
+    <update id="updateId" parameterType="com.yzl.entity.renderList">
+        update commodity
+        set name = #{name} where id = #{id}
+    </update>
+</mapper>
