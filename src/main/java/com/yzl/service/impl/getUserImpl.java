@@ -13,9 +13,8 @@ public class getUserImpl implements getUserService {
     @Autowired
     private UserMapper userMapper;
 
-    public renderList getUser(String id){
-        renderList user = userMapper.getUser(id);
-        System.out.println(id);
+    public renderList getUser(String name){
+        renderList user = userMapper.getUser(name);
         return  user;
     }
 }

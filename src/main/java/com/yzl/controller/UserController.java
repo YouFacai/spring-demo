@@ -7,6 +7,8 @@ import com.yzl.service.impl.UserServiceImpl;
 import com.yzl.service.impl.addServiceImpl;
 import com.yzl.service.impl.deletelmpl;
 import com.yzl.service.updateService;
+import com.yzl.utils.msgFactoryImpl.msgFactory;
+import com.yzl.utils.msgFactoryImpl.msgIndex;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
@@ -41,8 +43,8 @@ public class UserController {
     }
 
     @PostMapping("/getUser")
-    public renderList getUser(@RequestBody Map id) {
-        renderList user = getUserService.getUser(id.get("id").toString());
+    public renderList getUser(@RequestBody Map name) {
+        renderList user = getUserService.getUser(name.get("name").toString());
         return user;
     }
 
@@ -63,4 +65,5 @@ public class UserController {
         msg updateMsg = updateService.update(body);
         return updateMsg;
     }
+
 }

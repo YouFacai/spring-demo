@@ -4,6 +4,8 @@ import com.yzl.dao.UserMapper;
 import com.yzl.entity.msg;
 import com.yzl.entity.renderList;
 import com.yzl.service.updateService;
+import com.yzl.utils.msgFactoryImpl.msgFactory;
+import com.yzl.utils.msgFactoryImpl.msgIndex;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,14 +19,9 @@ public class updateServiceImpl implements updateService {
 
     public msg update(renderList body) {
         Integer count = UserMapper.updateId(body);
-        msg msg = new msg();
-        if (count == 0) {
-            msg.setMsg("修改失败");
-            msg.setCode(-1);
-        } else {
-            msg.setMsg("修改成功");
-            msg.setCode(200);
-        }
-        return msg;
+        count = count == 0 ? -1 : 200;
+        msgFactory Msg = msgIndex.createMsg(count);
+        msg msgData = Msg.CreateMsg();
+        return  msgData;
     }
 }
